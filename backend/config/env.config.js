@@ -1,0 +1,37 @@
+import dotenv from "dotenv"
+dotenv.config()
+
+const required = (key, defaultValue) => {
+    let value = process.env[key] || defaultValue;
+    if (!value) throw new Error("해당 환경변수는 존재하지 않습니다.");
+    return value;
+};
+
+export let config = {
+    database: {
+        user: required("DB_USER"),
+        password : required("DB_PASSWORD"),
+        host : required("DB_HOST"),
+        database : required("DB_DATABASE"),
+        port : required("DB_PORT")
+    },
+    jwt: {
+        secret_key : required("JWT_SECRET_KEY")
+    }
+};
+
+export let config = {
+    database: {
+        user: required("DB_USER"),
+        password: required("DB_PASSWORD"),
+        host: required("DB_HOST"),
+        database: required("DB_DATABASE"),
+        port: required("DB_PORT")
+    },
+    jwt: {
+        secret_key: required("JWT_SECRET_KEY")
+    },
+    gemini: {
+        api_key: required("GEMINI_API_KEY")
+    }
+};

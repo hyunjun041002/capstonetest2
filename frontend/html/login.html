@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 - ChatGPT 스타일</title>
+    <!-- 구글 폰트(Inter) 연결 - ChatGPT가 사용하는 글로벌하고 깔끔한 폰트 느낌을 냅니다 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- CSS 파일 연결 -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="auth-wrapper">
+        <!-- 상단 오픈AI/ChatGPT 스타일 로고 들어갈 자리 -->
+        <div class="brand-logo">
+            <svg width="42" height="42" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2A10 10 0 1 0 22 12A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8a8 8 0 0 1-8 8Z" fill="currentColor"/>
+            </svg>
+        </div>
+
+        <div class="auth-container">
+            <h1 class="auth-title">환영합니다</h1>
+            <p class="auth-subtitle">계정 정보를 입력하여 계속하세요.</p>
+            
+            <!-- 로그인 폼 -->
+            <form action="#" method="post" id="loginForm">
+                <!-- 이메일 입력 -->
+                <div class="input-wrapper">
+                    <input type="text" id="id" placeholder="아이디" required>
+                </div>
+
+                <!-- 비밀번호 입력 -->
+                <div class="input-wrapper">
+                    <input type="password" id="password" placeholder="비밀번호" required>
+                </div>
+
+                <!-- ChatGPT 특유의 초록색/검은색 계열의 와이드 버튼 -->
+                <button type="submit" class="btn-continue">계속</button>
+            </form>
+
+            <!-- 회원가입 유도 문구 -->
+            <div class="auth-footer">
+                <span>계정이 없으신가요?</span>
+                <a href="/signup" class="auth-link">가입하기</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript 파일 연결 -->
+    <Script type="module" src="js/login.js"></Script>
+</body>
+</html>

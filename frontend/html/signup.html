@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" >
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="auth-wrapper">
+    <div class="brand-logo">
+        <svg width="42" height="42" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2A10 10 0 1 0 22 12A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8a8 8 0 0 1-8 8Z" fill="currentColor"/>
+        </svg>
+    </div>
+
+    <div class="auth-container">
+        <h1 class="auth-title">계정 만들기</h1>
+        <p class="auth-subtitle">정보를 입력하여 가입을 진행하세요.</p>
+        
+      
+        <form action="#" method="POST" id="registerForm">
+         
+            <div class="input-wrapper">
+                <input type="text" id="username" placeholder="이름 (User name)" required>
+            </div>
+
+           
+            <div class="input-wrapper">
+                <input type="text" id="id" placeholder="아이디" required>
+            </div>
+
+       
+            <div class="input-wrapper">
+                <input type="password" id="password" placeholder="비밀번호" required>
+            </div>
+
+            <div class="input-wrapper">
+                <input type="password" id="confirmPassword" placeholder="비밀번호 확인" required>
+            </div>
+
+            
+            <button type="submit" class="btn-continue">계속</button>
+        </form>
+
+        
+        <div class="auth-footer">
+            <span>이미 계정이 있으신가요?</span>
+            <a href="/login" class="auth-link">로그인하기</a>
+        </div>
+    </div>
+</div>
+
+
+<Script type="module" src="js/signup.js"></Script>
+
+</body>
+</html>
