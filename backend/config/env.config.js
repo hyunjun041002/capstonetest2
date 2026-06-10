@@ -10,19 +10,6 @@ const required = (key, defaultValue) => {
 export let config = {
     database: {
         user: required("DB_USER"),
-        password : required("DB_PASSWORD"),
-        host : required("DB_HOST"),
-        database : required("DB_DATABASE"),
-        port : required("DB_PORT")
-    },
-    jwt: {
-        secret_key : required("JWT_SECRET_KEY")
-    }
-};
-
-export let config = {
-    database: {
-        user: required("DB_USER"),
         password: required("DB_PASSWORD"),
         host: required("DB_HOST"),
         database: required("DB_DATABASE"),
@@ -31,7 +18,7 @@ export let config = {
     jwt: {
         secret_key: required("JWT_SECRET_KEY")
     },
-    gemini: {
+    ai: {
         api_key: required("GEMINI_API_KEY")
     }
 };
