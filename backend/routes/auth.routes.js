@@ -1,12 +1,13 @@
-import express , { Router } from "express"
-import { AuthControl } from "../controls/auth.controls.js"
+import express, { Router } from "express";
+import { AuthControl } from "../controls/auth.controls.js";
 
-const router = express.Router() 
+const router = express.Router();
 
-router.post("/login", AuthControl.login )
+// 로그아웃
+router.get("/logout", AuthControl.logout);
+// 로그인
+router.post("/login", AuthControl.login);
+// 회원가입
+router.post("/signup", AuthControl.signup);
 
-router.delete("/logout", AuthControl.logout )
-
-router.post("/signup", AuthControl.signup )
-
-export default router
+export default router;
