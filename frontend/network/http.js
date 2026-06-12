@@ -13,6 +13,7 @@ export const fetching = async (url, option) => {
       },
     });
     let data = await response.json();
+    console.log(data);
     return await { status: response.status, inf: data };
   } catch (err) {
     throw err;

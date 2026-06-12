@@ -1,82 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatGPT Clone (Vanilla JS)</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-</head>
-<body class="bg-[#212121] text-gray-200 font-sans h-screen flex overflow-hidden">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChatGPT Clone</title>
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <!-- 사이드바 -->
+    <aside class="sidebar">
+      <div>
+        <button id="new-chat-btn" class="new-chat-btn">
+          <span>✨ New Chat</span>
+          <span>+</span>
+        </button>
 
-    <aside class="w-[260px] bg-[#171717] p-3 flex flex-col justify-between hidden md:flex shrink-0">
-        <div class="flex flex-col gap-2">
-            <button id="new-chat-btn" class="flex items-center justify-between px-3 py-2 border border-gray-600 rounded-lg text-sm hover:bg-gray-800 transition duration-200">
-                <span class="flex items-center gap-2 font-medium">
-                    <i data-lucide="sparkles" class="text-purple-400 w-4 h-4"></i> New chat
-                </span>
-                <i data-lucide="plus" class="w-4 h-4"></i>
-            </button>
-            
-            <div class="mt-4 flex flex-col gap-1">
-                <p class="text-xs text-gray-500 font-semibold px-3 mb-2">최근 대화</p>
-                <button class="flex items-center gap-3 px-3 py-2 text-sm text-gray-300 hover:bg-[#212121] rounded-lg text-left truncate">
-                    <i data-lucide="message-square" class="w-4 h-4"></i>
-                    <span>순수 자바스크립트 공부하기</span>
-                </button>
-            </div>
-        </div>
+        <div class="history">
+          <p class="history-title">최근 대화</p>
 
-        <div class="border-t border-gray-700 pt-3 flex flex-col gap-1">
-            <button class="flex items-center gap-3 px-3 py-2 text-sm hover:bg-[#212121] rounded-lg text-left">
-                <i data-lucide="settings" class="w-4 h-4"></i>
-                <span>설정</span>
-            </button>
+          <button class="history-item">💬 순수 자바스크립트 공부하기</button>
         </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn">로그아웃</button>
+      </div>
     </aside>
 
-    <main class="flex-1 flex flex-col relative h-full min-w-0">
-        <header class="w-full h-14 border-b border-gray-700 flex items-center justify-between px-4 md:justify-center shrink-0">
-            <button class="md:hidden text-gray-400 hover:text-white">
-                <i data-lucide="menu" class="w-5 h-5"></i>
-            </button>
-            <h1 class="font-semibold text-gray-100 flex items-center gap-2">
-                ChatGPT <span class="text-xs bg-gray-700 px-1.5 py-0.5 rounded text-gray-400">4o</span>
-            </h1>
-            <div class="w-5 md:hidden"></div>
-        </header>
+    <!-- 메인 -->
+    <main class="main">
+      <!-- 헤더 -->
+      <header class="header">
+        <h1>ChatGPT <span>4o</span></h1>
+      </header>
 
-        <div id="chat-feed" class="flex-1 overflow-y-auto p-4 md:p-8 flex flex-col gap-6 max-w-3xl mx-auto w-full pb-36">
-            <div class="flex gap-4 justify-start">
-                <div class="w-8 h-8 rounded-full bg-green-600 flex items-center justify-center text-xs font-bold text-white shrink-0">AI</div>
-                <div class="max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed bg-transparent text-gray-200">
-                    안녕하세요! 순수 자바스크립트로 만든 GPT 대화창입니다. 무엇을 도와드릴까요?
-                </div>
-            </div>
-        </div>
+      <!-- 채팅 영역 -->
+      <div id="chat-feed" class="chat-feed">
+        <div class="message">
+          <div class="avatar">AI</div>
 
-        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#212121] via-[#212121] to-transparent pt-6 pb-4">
-            <form id="chat-form" class="max-w-3xl mx-auto px-4 w-full">
-                <div class="relative flex items-center bg-[#2f2f2f] rounded-2xl border border-gray-700 focus-within:border-gray-500 p-1.5">
-                    <input
-                        type="text"
-                        id="chat-input"
-                        placeholder="ChatGPT에게 메시지 보내기"
-                        class="flex-1 bg-transparent py-2.5 pl-3 pr-12 text-sm text-white placeholder-gray-500 focus:outline-none"
-                        autocomplete="off"
-                    />
-                    <button
-                        type="submit"
-                        id="send-btn"
-                        class="absolute right-3 p-2 rounded-xl transition duration-200 text-gray-600 bg-transparent"
-                    >
-                        <i data-lucide="send" class="w-4 h-4"></i>
-                    </button>
-                </div>
-            </form>
+          <div class="message-content">
+            안녕하세요! 순수 자바스크립트로 만든 GPT 대화창입니다. 무엇을
+            도와드릴까요?
+          </div>
         </div>
+      </div>
+
+      <!-- 입력창 -->
+      <div class="input-area">
+        <form id="chat-form">
+          <div class="input-wrapper">
+            <input
+              type="text"
+              id="chat-input"
+              placeholder="ChatGPT에게 메시지 보내기"
+            />
+
+            <button type="submit" id="send-btn">➤</button>
+          </div>
+        </form>
+      </div>
     </main>
-
     <script type="module" src="js/index.js"></script>
-</body>
+  </body>
 </html>

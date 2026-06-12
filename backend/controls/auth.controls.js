@@ -1,32 +1,35 @@
-import { AuthServices } from "../services/auth.services.js"
+import { AuthServices } from "../services/auth.services.js";
 
 export const AuthControl = {
-    signup: async (req, res)=>{
-        let { id, name, password } = req.body
-        
-        try { 
-            let result = await AuthServices.signup(id, name, password)
-            res.status(201).json({message: '회원가입 성공!'})
-        } catch (error) {
-        console.log(error);
-        }},
-    login: async (req,res)=>{
-        let { id, password } = req.body
-        try {
-            let token = await AuthServices.login(id, password)
-            console.log(token)
-        res.cookie('token', token, {
-            httpOnly: true,
-            maxAge: 60 * 60 * 1000,
-        })
+  // 회원가입
+  signup: async (req, res) => {
+    let { id, name, password } = req.body;
 
-        res.status(200).json({ message: '로그인 성공!' })
+    try {
+      let result = await AuthServices.signup(id, name, password);
+      res.status(201).json({ message: "회원가입 성공!" });
     } catch (error) {
-        res.status(401).json({ message: error.message })
+      console.log(error);
     }
-},
-logout: async (req, res) => {
-        res.clearCookie('token');
-        res.status(200).json({ message: '로그아웃 성공!' });
-}
-}
+  },
+  // 로그인
+  login: async (req, res) => {
+    let { id, password } = req.body;
+    try {
+      let token = await AuthServices.login(id, password);
+      res.cookie("token", token, {
+        httpOnly: true,
+        maxAge: 60 * 60 * 1000,
+      });
+
+      res.status(200).json({ message: "로그인 성공!" });
+    } catch (error) {
+      res.status(401).json({ message: error.message });
+    }
+  },
+  // 로그아웃
+  logout: async (req, res) => {
+    res.clearCookie("token");
+    res.status(200).json({ message: "로그아웃 성공!" });
+  },
+};
